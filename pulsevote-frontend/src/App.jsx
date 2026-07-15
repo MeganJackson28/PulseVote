@@ -5,7 +5,7 @@ function App() {
 
 const [apiTest, setApiTest] = useState(null);
 useEffect(() => {
-    fetch("http://localhost:5000/test")
+    fetch("https://localhost:5000/test")
     .then(res => res.json())
     .then(data => setApiTest(data))
     .catch(() => setApiTest({ message: "API not reachable" }));

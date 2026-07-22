@@ -24,3 +24,22 @@ app.get('/test', (req, res) => {
 });
 
 module.exports = app;
+
+const authRoutes = require("./routes/authRoutes");
+
+app.use("/api/auth", authRoutes);
+
+app.use(cors({
+  origin: "https://localhost:5173",
+  credentials: true
+}));
+
+
+const { protect } = require("./middleware/authMiddleware");
+
+app.get("/api/protected", protect, (req, res) => {
+  res.json({
+    message: `Welcome, user ${req.user.id}! You have accessed protected data.`,
+    timestamp: new Date()
+  });
+});

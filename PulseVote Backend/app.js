@@ -7,6 +7,19 @@ dotenv.config();
 
 const app = express();
 
+app.use(
+helmet.contentSecurityPolicy({
+    directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'", "https://apis.google.com"],
+    styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+    fontSrc: ["'self'", "https://fonts.gstatic.com"],
+    imgSrc: ["'self'", "data:"],
+    connectSrc: ["'self'", "http://localhost:5000"],
+    },
+})
+);
+
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
@@ -29,6 +42,14 @@ const authRoutes = require("./routes/authRoutes");
 
 app.use("/api/auth", authRoutes);
 
+const organisationRoutes = require("./Routes/organisationRoutes.js");
+
+app.use("/api/organisations", organisationRoutes);
+
+const pollRoutes = require("./routes/pollRoutes");
+
+app.use("/api/polls", pollRoutes);
+
 app.use(cors({
   origin: "https://localhost:5173",
   credentials: true
@@ -43,3 +64,6 @@ app.get("/api/protected", protect, (req, res) => {
     timestamp: new Date()
   });
 });
+
+
+

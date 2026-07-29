@@ -1,11 +1,17 @@
-export default function HomePage() {
+function HomePage() {
   return (
-    <div className="card">
-      <h2>Welcome to PulseVote</h2>
+    <main>
+      <h1>PulseVote</h1>
 
-      <p>
-        You can log in or register using the menu.
-      </p>
-    </div>
+      <h2>CSP Test</h2>
+
+      <img
+        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+        alt="CSP violation test"
+        width="300"
+      />
+    </main>
   );
 }
+
+export default HomePage;

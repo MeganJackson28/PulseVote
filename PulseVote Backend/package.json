@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "jest --passWithNoTests",
+    "lint": "eslint ."
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
+    "eslint": "^10.8.0",
     "express": "^5.2.1",
     "express-rate-limit": "^8.6.1",
     "express-validator": "^7.3.2",

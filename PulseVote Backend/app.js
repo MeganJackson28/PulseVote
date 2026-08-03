@@ -15,7 +15,7 @@ helmet.contentSecurityPolicy({
     styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
     fontSrc: ["'self'", "https://fonts.gstatic.com"],
     imgSrc: ["'self'", "data:"],
-    connectSrc: ["'self'", "http://localhost:5000"],
+    connectSrc: ["'self'", "https://localhost:5000"]
     },
 })
 );

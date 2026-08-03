@@ -3,6 +3,7 @@ const { registerUser, registerManager, registerAdmin, login } = require("../cont
 const { requireRole } = require("../middleware/roleMiddleware");
 const { body } = require("express-validator");
 const { protect } = require("../middleware/authMiddleware");
+const { registerLimiter, loginLimiter} = require("../middleware/rateLimiter")
 const router = express.Router();
 
 const emailValidator = body("email")
@@ -15,10 +16,11 @@ const passwordValidator = body("password")
 .matches(/\d/).withMessage("Password must include a number")
 .trim().escape();
 
-router.post("/register-user", [emailValidator, passwordValidator], registerUser);
-router.post("/register-manager", protect, requireRole("admin"), [emailValidator, passwordValidator], registerManager);
-router.post("/register-admin", [emailValidator, passwordValidator], registerAdmin);
-router.post("/login", [emailValidator, body("password").notEmpty().trim().escape()], login);
+router.post("/register-user", registerLimiter, [emailValidator, passwordValidator], registerUser);
+router.post("/register-manager", protect, requireRole("admin"), registerLimiter, [emailValidator, passwordValidator], registerManager);
+router.post("/register-admin", registerLimiter, [emailValidator, passwordValidator], registerAdmin);
+
+router.post("/login", loginLimiter, [emailValidator, body("password").notEmpty().trim().escape()], login);
 
 module.exports = router;
 

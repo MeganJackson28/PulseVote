@@ -1,6 +1,6 @@
-const Poll = require("../models/Poll");
-const Organisation = require("../models/Organisation");
-const User = require("../models/User");
+const Poll = require("../Models/Poll");
+const Organisation = require("../Models/Organisation");
+const User = require("../Models/User");
 
 function hasOrganisationRole(user, organisationId, roleName) {
   return user.roles.some(

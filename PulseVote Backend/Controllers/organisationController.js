@@ -1,5 +1,5 @@
-const Organisation = require("../models/Organisation");
-const User = require("../models/User");
+const Organisation = require("../Models/Organisation");
+const User = require("../Models/User");
 const generateToken = require("../utils/generateToken");
 
 exports.createOrganisation = async (req, res) => {

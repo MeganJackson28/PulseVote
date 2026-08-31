@@ -8,7 +8,7 @@ const {
   getOrgPolls,
   closePoll,
   openPoll
-} = require("../controllers/pollController");
+} = require("../Controllers/pollController");
 
 const router = express.Router();
 

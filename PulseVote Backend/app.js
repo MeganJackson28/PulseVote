@@ -4,7 +4,7 @@ const helmet = require('helmet');
 const dotenv = require('dotenv');
 const authRoutes = require("./Routes/authRoutes");
 const organisationRoutes = require("./Routes/organisationRoutes");
-const pollRoutes = require("./Routes/PollRoutes");
+const pollRoutes = require("./Routes/pollRoutes");
 const { protect } = require("./middleware/authMiddleware");
 
 dotenv.config();
